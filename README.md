@@ -13,4 +13,5 @@ Bandicam: 录屏
 Beyond Compare: 文件对比
 KeePass: 密码仓库
 SpaceSniffer: 磁盘文件大小查看
+Bandizip: 压缩解压软件
 ```
