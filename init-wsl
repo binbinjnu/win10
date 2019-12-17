@@ -1,0 +1,27 @@
+#Win10 Linux wsl子系统开机启动并添加Linux开机启动任务
+```text
+1. 创建启动脚本,脚本内容自定义
+vim /etc/init.wsl
+ 
+#!/bin/sh
+/ets/init.d/ssh start
+/etc/init.d/mysqld start
+ 
+2. 添加执行权限
+chmod +x /etc/init.wsl
+ 
+3. 编辑sudoers，避免输入密码
+vim /etc/sudoers
+添加一行
+%sudo ALL=NOPASSWD: /etc/init.wsl
+ 
+4. 返回windows界面创建一个startservice.vbs脚本，内容为：
+
+Set ws = WScript.CreateObject("WScript.Shell")
+ws.run "C:\Windows\System32\bash.exe -c 'sudo /etc/init.wsl'",0
+ 
+5. 按键win+r 输入shell:startup系统会自动打开一个目录，这时候
+将上一步创建的vbs脚本放到该目录下
+ 
+6. 重启电脑即可
+```
